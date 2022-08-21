@@ -1,0 +1,42 @@
+﻿<Page x:Class="SepeteEkleme.Views.KayitOl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SepeteEkleme.Views"
+      mc:Ignorable="d" Background="White"
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="KayitOl">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Kayıt Ol" HorizontalAlignment="Center" FontSize="19"/>
+                <Border Width="400" Height="1" Background="#e1e1e1" Margin="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <Label Content="Ad Soyad: " VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="14" Height="36" Margin="5"/>
+                    <Label Content="Email: " VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="14" Height="36" Margin="5"/>
+                    <Label Content="Şifre: " VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="14" Height="36" Margin="5"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox x:Name="txtAdSoyad" Width="250" Height="36" Margin="5" VerticalContentAlignment="Center" FontSize="16" Padding="4,0,0,0"/>
+                    <TextBox x:Name="txtEmail" Width="250" Height="36" Margin="5" VerticalContentAlignment="Center" FontSize="16" Padding="4,0,0,0"/>
+                    <PasswordBox x:Name="pbSifre" Width="250" Height="36" Margin="5" VerticalContentAlignment="Center"  FontSize="16" Padding="4,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,14,0,0">
+                <TextBlock FontSize="15" Text="Eğer bir hesabın varsa; "/>
+                <Button x:Name="btnGoGirisYap" FontSize="14" BorderThickness="0" Content="Giriş Yap" Margin="4,0,0,0" Background="White"/>
+            </StackPanel>
+            <Button x:Name="btnKayitOl" Width="160" Height="36" Content="Kayit Ol" Margin="0,20,0,0" Background="White" FontSize="16">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
