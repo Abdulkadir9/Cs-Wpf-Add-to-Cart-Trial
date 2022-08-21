@@ -9,6 +9,26 @@
       Title="SepetPage">
 
     <Grid>
-        
+        <TextBlock x:Name="txtTotalFiyat"/>
+        <ListBox x:Name="lbSepetims" VerticalContentAlignment="Top">
+            <ListBox.ItemTemplate>
+                <ItemContainerTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                        <Border BorderThickness="1" BorderBrush="#e1e1e1" Padding="10" CornerRadius="6">
+                            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Image Width="86" Source="{Binding Urun_Resim}"/>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0">
+                                    <TextBlock Text="{Binding Urun_Ad}" FontSize="18"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Urun_Fiyat}" FontSize="16"/>
+                                    <TextBlock Text=" ₺"  FontSize="16"/>
+                                </StackPanel>
+                            </WrapPanel>
+                        </Border>
+                    </WrapPanel>
+                </ItemContainerTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

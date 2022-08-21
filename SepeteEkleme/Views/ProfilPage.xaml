@@ -9,7 +9,16 @@
       Title="ProfilPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="cikisYapPanel">
+            <Button x:Name="btnCikisYap" Width="160" Height="36" Content="Çıkış Yap" Margin="0,20,0,0" Background="White" FontSize="16">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="girisYapPanel" Visibility="Hidden">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Giriş Yap" HorizontalAlignment="Center" FontSize="19"/>
                 <Border Width="400" Height="1" Background="#e1e1e1" Margin="10"/>

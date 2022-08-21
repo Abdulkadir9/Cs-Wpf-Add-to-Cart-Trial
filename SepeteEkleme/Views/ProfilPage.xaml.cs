@@ -21,12 +21,35 @@ namespace SepeteEkleme.Views
     /// </summary>
     public partial class ProfilPage : Page
     {
-        public static bool girisYapildi = false;
+        Uri cookieUri = new Uri(@"C:\Users\Kadir\Desktop");
+        bool girisYapildi = false;
+        int kullaniciId;
+
         public ProfilPage()
         {
             InitializeComponent();
             btnGoKayitOl.Click += BtnGoKayitOl_Click;
             btnGirisYap.Click += BtnGirisYap_Click;
+            
+            try
+            {
+                kullaniciId = int.Parse(Application.GetCookie(cookieUri));                
+                girisYapPanel.Visibility = Visibility.Hidden;
+                cikisYapPanel.Visibility = Visibility.Visible;
+            }
+            catch (Exception)
+            {
+                girisYapPanel.Visibility = Visibility.Visible;
+                cikisYapPanel.Visibility = Visibility.Hidden;
+            }
+
+            btnCikisYap.Click += BtnCikisYap_Click;
+        }
+
+        private void BtnCikisYap_Click(object sender, RoutedEventArgs e)
+        {
+            Application.SetCookie(cookieUri, "");
+            NavigationService.Navigate(new ProfilPage());
         }
 
         private void BtnGirisYap_Click(object sender, RoutedEventArgs e)
@@ -34,33 +57,39 @@ namespace SepeteEkleme.Views
             if ((!String.IsNullOrEmpty(txtEmail.Text) && !String.IsNullOrWhiteSpace(txtEmail.Text)) &&
                 (!String.IsNullOrEmpty(pbSifre.Password) && !String.IsNullOrWhiteSpace(pbSifre.Password)))
             {
-               
                 foreach (var k in Data.db.Kullanicis)
-                {                   
-                    if (k.Kullanici_Email == txtEmail.Text && k.Kullanici_Sifre == pbSifre.Password)
+                {
+                    if (txtEmail.Text == k.Kullanici_Email && pbSifre.Password == k.Kullanici_Sifre)
                     {
-                        MessageBox.Show("Giriş yapıldı.");
                         girisYapildi = true;
-                        NavigationService.Navigate(new UrunPage());
-                    }
-                    else if (txtEmail.Text == "admin" && pbSifre.Password == "admin")
-                    {
-                        MessageBox.Show("Hoş geldiniz admin beys.");
-                        NavigationService.Navigate(new AdminPage());
-                    }
-                    else 
-                    {
-                        MessageBox.Show("Sistemde kayıt değil.");
-                        txtEmail.Clear();
-                        pbSifre.Clear();
-                        txtEmail.Focus();
+                        kullaniciId = k.Kullanici_ID;
                     }
                 }
+
+                if (girisYapildi == true)
+                {
+                    MessageBox.Show("Giriş yapıldı.");
+                    Application.SetCookie(cookieUri, kullaniciId.ToString());
+                    NavigationService.Navigate(new UrunPage());
+                }
+                else if (txtEmail.Text == "admin" && pbSifre.Password == "admin")
+                {
+                    MessageBox.Show("Hoş geldiniz admin beys.");
+                    NavigationService.Navigate(new AdminPage());
+                }
+                else
+                {
+                    MessageBox.Show("Sistemde kayıt değil.");
+                    txtEmail.Clear();
+                    pbSifre.Clear();
+                    txtEmail.Focus();
+                }
+
             }
             else
             {
                 MessageBox.Show("Tüm alanları doldurduğunuzdan emin olun.");
-                
+
                 txtEmail.Clear();
                 pbSifre.Clear();
 

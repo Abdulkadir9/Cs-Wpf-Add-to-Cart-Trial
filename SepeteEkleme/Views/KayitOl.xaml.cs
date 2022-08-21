@@ -36,27 +36,15 @@ namespace SepeteEkleme.Views
                 (!String.IsNullOrEmpty(pbSifre.Password) && !String.IsNullOrWhiteSpace(pbSifre.Password)))
             {
 
-                foreach (var k in Data.db.Kullanicis)
+                Data.db.Kullanicis.Add(new Kullanici()
                 {
-                    if (k.Kullanici_Email != txtEmail.Text)
-                    {
-                        Data.db.Kullanicis.Add(new Kullanici()
-                        {
-                            Kullanici_AdiSoyadi = txtAdSoyad.Text,
-                            Kullanici_Email = txtEmail.Text,
-                            Kullanici_Sifre = pbSifre.Password,
-                        });
-                        Data.db.SaveChanges();
-                        MessageBox.Show("Kayıl olundu,\nGiriş yapma sayfasına yönlendiriliyorsun.");
-                        NavigationService.Navigate(new ProfilPage());
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sistemde zaten böyle bir Email var.");
-                        txtEmail.Clear();
-                        txtEmail.Focus();
-                    }
-                }
+                    Kullanici_AdiSoyadi = txtAdSoyad.Text,
+                    Kullanici_Email = txtEmail.Text,
+                    Kullanici_Sifre = pbSifre.Password,
+                });
+                Data.db.SaveChanges();
+                MessageBox.Show("Kayıl olundu,\nGiriş yapma sayfasına yönlendiriliyorsun.");
+                NavigationService.Navigate(new ProfilPage());
 
             }
             else

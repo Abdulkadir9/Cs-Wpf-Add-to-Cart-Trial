@@ -9,6 +9,32 @@
       Title="AdminPage">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Ürün Ad: " Height="40" VerticalContentAlignment="Center" Margin="4"/>
+                    <Label Content="Fiyat: " Height="40"  VerticalContentAlignment="Center" Margin="4"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox x:Name="txtUrunAd" Width="250" Height="40" Margin="4" />
+                    <TextBox x:Name="txtUrunFiyat" Width="250" Height="40" Margin="4" />
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="btnResimSec" Content="Resim Seç" Margin="10" Height="40" Width="260" Background="White">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Image x:Name="urunImg" MaxWidth="200" MaxHeight="200" Margin="10"/>
+            <Button x:Name="btnUrunEkle" Content="Ürün Ekle" Margin="10" Height="40" Width="200" Background="White">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>
